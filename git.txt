@@ -1,0 +1,166 @@
+버전 관리 시스템
+   	원하는 시점(버전)으로 이동할 수 있으며,
+   	각 버전별로 여러 개발자가 협업할 수 있는 최적의 환경을 제공하는 시스템
+
+SVN
+   	작업 내역 커밋 시 변경사항과 히스토리가 즉시 서버로 전송되기 때문에 관리가 용이하다.
+   	또한 간단한 설치와 사용방법으로 별도의 교육 없이도 초보자도 쉽게 사용할 수 있다.
+   	하지만 항상 원격 저장소(SVN 서버)를 필요로 하며 서버간 버전 관리가 힘들다.
+
+Git
+   SVN이 가지고 있던 클라이언트와 서버 간의 버전 관리 문제를 많이 보완해준 시스템이다.
+   서버 뿐만 아니라 로컬에서도 버전 관리가 가능하며, 로컬이 서버가 될 수 있고
+   서버가 로컬이 될 수도 있다. 브랜치라는 개념을 사용하여 개발자 마음대로 로컬 환경에서도 버전 관리가 가능하다.
+
+Git-Hub
+   Git으로 관리하는 프로젝트를 호스팅 해주는 사이트 중 하나이다.
+   로컬에서 작업하던 파일을 다른 클라이언트와 공유하기 위한 서버이다.
+----------------------------------------------------------------------------------------------------------------------------------------------
+저장소의 종류
+   - 로컬 저장소(local): 개인 전용
+   - 원격 저장소(remote): 서버 전용
+
+작업 트리(Work-Tree)
+   폴더 또는 디렉터리를 의미한다.
+
+스테이징 - add
+   작업 트리를 커밋하기 전 작업 트리의 파일 상태를 기록하는 임시 공간이다.
+   커밋하기 전에 반드시 커밋할 내용은 인덱스에 추가되어야 하며, 이를 스테이징이라고 한다.
+   변경한 모든 파일을 커밋하지 않고, 원하는 파일만 골라서 스테이징을 하게 되면
+   인덱스에 등록된 파일들만 커밋된다. 인덱스에 등록되지 않은 파일들은 커밋이 될 수 없다.
+
+커밋 - commit
+   버전을 만들 때 사용한다.
+   예를 들어 A와 B라는 파일을 하나의 버전으로 관리하고자 할 때 커밋을 사용한다.
+   커밋 시 고유한 커밋 아이디가 부여되며, 원하는 버전으로 돌아갈 때 커밋 아이디 중 앞 7글자를 사용한다.
+
+체크아웃 - checkout
+   원하는 버전 또는 브랜치로 이동하고 싶을 때 사용한다.
+   체크아웃 명령어 뒤에 커밋 아이디 전체 또는 앞 7글자를 작성하면 해당 버전으로 이동하게 된다.
+
+브랜치
+   한 개의 처리 경로를 여러 개의 처리 경로로 나눌 때 사용한다.
+   기본 브랜치는 master이고, 각 브랜치는 생성 시의 버전을 가리킨다.
+
+푸쉬 - push
+   로컬 저장소에 커밋한 파일들을 원격 저장소에 추가하는 명령어이다.
+
+명령어
+   git init
+   git config --global user.name "[git-hub user-name]"
+   git config --global user.email "[git-hub email]"
+   git config --list
+   git add .
+   git status
+   git commit -m "메세지"
+   git log --pretty=oneline
+   git checkout [커밋 아이디 또는 브랜치명]
+   git checkout -b [브랜치명]
+   git branch
+   git branch -d [브랜치명]
+   git merge [브랜치명]
+   git remote add [원격 저장소 이름] [서버 경로]
+   git remote -v
+   git remote remove [원격 저장소 이름]
+   git push [원격 저장소 이름] [원격 저장소 브랜치명]
+
+
+<내가 만든것을 github 원하는 repository에 넣을떄>
+
+1) git init
+
+2) workspace 폴더에 conifg txt 만들고 안에 내용 ex) 테스트입니다.
+
+3) git add, git commit -m "init"
+
+4) git remote add origin(default 너낌) "[내 github도메인주소]" 복.붙(shitf + insert 키)
+
+5) git remote  = add한 origin 확인
+
+6) remote -v 경로를 자세히볼때
+
+7) git push origin master 
+	넣는중에 오류가 나면 서로 뭔가 맞지  않다 라는 오류인데 pull받아서 push해줄 곳에 동일한 파일을
+	받아오고 실행 "[git pull origin master]"
+
+7-1) git pull origin master --allow-unrelated-histories	 
+	다시 한번 pull을 받는중에 안되는데  위에걸 써서 master 브랜치와 같음을 알려준다.
+		
+8) git push origin master 다시 master 브랜치에 넣어준다
+
+9) repository에 추가되었는지 확인
+
+<자격 증명>
+
+1) repository에 추가가 안될시, 다른 계정으로 로그인 되어있을시, 
+   자격증명에서 github로그인이 안되어있을시 해야함
+
+2) 자격증명에서 git 관련된거 없애고 git push origin master 치면 알아서 자격증명에 내 계정 생성 됨
+
+마스터는 pull, push 전용 마스터엔 병합도 하면안됨 할 시 내 브랜치이름이 적힌게 올라가서 뜨끔하는 상황생김
+
+내가 작업하다가 완료하면 add하고 commit 하고 마스터 브랜치와서 merge하고 push하고 그리고 다시 내 브랜치로 돌아와서(checkout origin) pull받으라고 하면 내 작업 commit하고 마스터로와서 pull 받고 내가작업하던거 마무리하고 merge master
+
+<master 브랜치와 user 브랜치와 병합하고 내 repository에 넣어줄때>
+
+1) git checkout -b / user user 브랜치 생성
+
+2) git status 상태확인 
+	빨간색으로 join.txt, login.txt적혀있는거 확인
+
+3) git add .
+
+4) git commit -m "join login init"
+
+5) git checkout master
+
+6) git push origin master / 다시 repository에 넣어주기
+
+<회사에서 프로젝트 꼽사리 참여하게 될시  clone으로 pull받는법>
+(실습에선 방금 pull시킨 workspace 파일 다 지우기)
+
+1) git clone -b master [pull받아야할 도메인 주소]
+
+2) git checkout -b origin
+	master에서 작업을 하면 안되기 때문에 내 브랜치 만든다
+
+3) git merge master 
+	pull 받아온 master에서 머지받기!
+
+팀장은 Organization 만들기
+팀장은 people에서 팀원 초대
+팀장은 새로운 레포지토리 생성
+팀장은 settings > Collaborators and teams에서 Add People로 팀원 초대
+팀장은 remote add [공용 레포지토리 이름] [경로]
+팀장은 초기 설정 파일을 로컬에서 제작, add, commit, Organization의 레포지토리로 push
+팀원들에게 Organization의 레포지토리 주소(경로) 공유
+팀원들은 공유받은 링크로 접속
+전원 fork 받기 -> 개인 레포지토리로 생성(forked)
+팀원 전체 clone받기
+팀원 별 로컬에서 작업 진행(반드시 개인 branch에서 작업)
+작업 종료 후, add, commit, checkout master
+master 브랜치에 merge 진행
+git remote add origin [개인 레포지토리 경로(forked)]
+git push origin master
+Git-Hub 사이트에서 push한 내용 확인
+페이지 상단의 Pull requests 클릭
+2번 버튼 누르기(Create Pull request 등 녹색버튼)
+메세지 작성(기본 메세지 놔둬도 상관없음)
+완료 버튼 클릭
+팀장님에게 카톡으로 PR 확인부탁드립니다! 보내기
+팀장은 Organization에 있는 레포지토리에서 PR확인하기
+문제 없이 녹색버튼이 활성화되면, Confirm 해주기(작성할 내용은 마음대로)
+
+팀장이 전체에게 카톡으로 "전원 pull 받아주세요" 보내기
+팀원들은 개인 레포지토리에서 synch fork 누른 뒤 update branch 클릭하여 동기화하기
+작업 브랜치에서 master 브랜치로 이동(반드시 커밋 후에 이동해야한다)
+git pull origin master
+
+팀장이 gitbash에서 할 거
+git init
+git add
+git commit
+git push origin master
+git remote
+git remote add [서버이름] 도메인주소
+git push [서버이름] master 
