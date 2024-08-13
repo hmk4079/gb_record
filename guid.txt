@@ -1,14 +1,4 @@
-1. master엔 git 메모와 같이 guid 남기겠음
-
-2. git checkout javafile - java 메모, 워크스페이스 있음
-
-3. git checkout  dbmsfile - dbm s메모, 워크스페이스 있음
-
-4. git checkout html - html 메모, 워크스페이스 있음
-
-5. git checkout css - css 메모, 워크스페이스 있음
-
-6. git checkout js - js 메모, 워크스페이스 있음
 
 ------수정한 브랜치, 날짜 아래로 추가할것------
 `24.08.13 master(git), java, dbms, html, css, js
+파일명 : 0813file
