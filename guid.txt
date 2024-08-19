@@ -2,3 +2,10 @@
 ------수정한 브랜치, 날짜 아래로 추가할것------
 `24.08.13 master(git), java, dbms, html, css, js
 파일명 : 0813file
+
+------수정한 브랜치, 날짜 아래로 추가할것------
+`24.08.19 master(git), java, dbms, html, css, js
+파일명 : 0819file
+
+
+
