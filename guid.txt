@@ -7,5 +7,9 @@
 `24.08.19 master(git), java, dbms, html, css, js
 파일명 : 0819file
 
+------수정한 브랜치, 날짜 아래로 추가할것------
+`24.08.22 master(git), java, dbms, html, css, js
+파일명 : 0822file
+
 
 
